@@ -13,6 +13,10 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use("/api/workouts", workoutRoutes);
 
+app.use((req, res) => {
+  res.status(404).json({ error: "Route does not exist" });
+});
+
 app.listen(port, () => {
   `Server is listening on port ${port}`;
 });
